@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Поиск университетов</title>
+    <link rel="stylesheet" type="text/css" href="task-3.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Поиск университетов</h1>
+    <form id="search-form">
+        <label for="country-input">Страна:</label>
+        <input type="text" id="country-input">
+        <button type="submit">Отправить</button>
+        <button type="button" id="reset-button">Сброс</button>
+    </form>
+    <div>
+        <p>Отмечено чекбоксов: <span id="checkbox-count">0</span></p>
+    </div>
+    <div id="search-results"></div>
+</body>
+
+</html>
