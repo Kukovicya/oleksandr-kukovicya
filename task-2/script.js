@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const deletedImagesKey = "deletedImages";
   let deletedImages = [];
 
-  // модальне вікно
   function handleImageClick(event) {
     const clickedImageSrc = event.target.src;
     const imageItem = event.currentTarget;
@@ -25,16 +24,17 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.classList.add("active");
     popupImage.dataset.index = index;
   }
-  // закриття модалки
+
   function handleCloseClick() {
     popup.classList.remove("active");
+    popupOverlay.classList.remove("active");
   }
 
   function handleOverlayClick() {
     popup.classList.remove("active");
+    popupOverlay.classList.remove("active");
   }
 
-  // кнопка видалення
   function handleDeleteClick(event) {
     const imageItem = event.currentTarget.parentNode;
     const deletedImageSrc = imageItem.querySelector("img").src;
@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(deletedImagesKey, JSON.stringify(deletedImages));
   }
 
-  // кнопка відновлення
   function handleRestoreClick() {
     deletedImages.forEach(function (deletedImageSrc) {
       const imageItem = Array.from(imageItems).find(function (item) {
@@ -57,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     deletedImages = [];
     localStorage.removeItem(deletedImagesKey);
   }
+
   imageItems.forEach(function (imageItem) {
     const image = imageItem.querySelector("img");
     const deleteButton = imageItem.querySelector(".delete-button");
@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
   popupOverlay.addEventListener("click", handleOverlayClick);
   restoreButton.addEventListener("click", handleRestoreClick);
 
-  // Перевірка локалсторедж
   if (localStorage.getItem(deletedImagesKey)) {
     deletedImages = JSON.parse(localStorage.getItem(deletedImagesKey));
     deletedImages.forEach(function (deletedImageSrc) {
