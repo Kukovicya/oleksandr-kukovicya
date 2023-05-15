@@ -25,12 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.classList.add("active");
     popupImage.dataset.index = index;
   }
-
+  // закриття модалки
   function handleCloseClick() {
     popup.classList.remove("active");
   }
 
-  // закриття модалки
   function handleOverlayClick() {
     popup.classList.remove("active");
   }
