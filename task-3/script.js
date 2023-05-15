@@ -1,12 +1,10 @@
 $(document).ready(function () {
-  // Проверка, есть ли сохраненные данные
   if (localStorage.getItem("universities")) {
     $("#search-results").html(localStorage.getItem("universities"));
     restoreCheckboxState();
     updateCheckboxCount();
   }
 
-  // Обработчик нажатия на кнопку "Отправить"
   $("#search-form").submit(function (event) {
     event.preventDefault();
     var country = $("#country-input").val();
@@ -44,7 +42,6 @@ $(document).ready(function () {
     );
   });
 
-  // Обработчик нажатия на кнопку "Сброс"
   $("#reset-button").click(function () {
     $("#country-input").val("");
     $("#search-results").empty();
@@ -53,13 +50,11 @@ $(document).ready(function () {
     localStorage.clear();
   });
 
-  // Обработчик изменений в чекбоксах
   $(document).on("change", ".save-checkbox", function () {
     saveCheckboxState();
     updateCheckboxCount();
   });
 
-  // Восстановление состояния чекбоксов
   function restoreCheckboxState() {
     $(".save-checkbox").each(function (index) {
       var checkboxId = "checkbox-" + index;
@@ -73,7 +68,6 @@ $(document).ready(function () {
     });
   }
 
-  // Сохранение состояния чекбоксов
   function saveCheckboxState() {
     $(".save-checkbox").each(function (index) {
       var checkboxId = "checkbox-" + index;
@@ -83,7 +77,6 @@ $(document).ready(function () {
     });
   }
 
-  // Сброс состояния чекбоксов
   function resetCheckboxState() {
     $(".save-checkbox").prop("checked", false);
     $(".save-checkbox").each(function (index) {
@@ -93,7 +86,6 @@ $(document).ready(function () {
     });
   }
 
-  // Об  // Обновление счетчика чекбоксов
   function updateCheckboxCount() {
     var count = $(".save-checkbox:checked").length;
     $("#checkbox-count").text(count);
